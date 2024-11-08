@@ -133,28 +133,37 @@ public class CekGanjilGenapFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtInputFocusGained
 
     private void btnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekActionPerformed
-           String inputText = txtInput.getText();
+String inputText = txtInput.getText();
 
-        if (inputText.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Masukkan angka terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
+    if (inputText.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Masukkan angka terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    try {
+        int number = Integer.parseInt(inputText); // Ambil angka input
+        String hasil;
+
+        // Periksa apakah angka ganjil atau genap
+        if (number % 2 == 0) {
+            hasil = "Angka " + number + " merupakan angka Genap";
+        } else {
+            hasil = "Angka " + number + " merupakan angka Ganjil";
         }
 
-        try {
-            int number = Integer.parseInt(inputText);
-            String hasil = (number % 2 == 0) ? "Genap" : "Ganjil";
-
-            if (isPrime(number)) {
-                hasil += " dan merupakan bilangan prima";
-            } else {
-                hasil += " dan bukan bilangan prima";
-            }
-
-            JOptionPane.showMessageDialog(this, "Hasil: " + hasil, "Hasil Cek", JOptionPane.INFORMATION_MESSAGE);
-
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
+        // Tambahkan informasi apakah angka prima atau bukan
+        if (isPrime(number)) {
+            hasil += " dan merupakan bilangan prima";
+        } else {
+            hasil += " dan bukan bilangan prima";
         }
+
+        // Tampilkan hasil di JOptionPane
+        JOptionPane.showMessageDialog(this, hasil, "Hasil Cek", JOptionPane.INFORMATION_MESSAGE);
+
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }
         
     private boolean isPrime(int number) {
