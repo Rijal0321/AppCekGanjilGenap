@@ -45,6 +45,11 @@ public class CekGanjilGenapFrame extends javax.swing.JFrame {
         });
 
         btnCek.setText("Cek");
+        btnCek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekActionPerformed(evt);
+            }
+        });
 
         btnKeluar.setText("Keluar");
 
@@ -122,6 +127,42 @@ public class CekGanjilGenapFrame extends javax.swing.JFrame {
     txtInput.setText("");
     }//GEN-LAST:event_txtInputFocusGained
 
+    private void btnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekActionPerformed
+           String inputText = txtInput.getText();
+
+        if (inputText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Masukkan angka terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            int number = Integer.parseInt(inputText);
+            String hasil = (number % 2 == 0) ? "Genap" : "Ganjil";
+
+            if (isPrime(number)) {
+                hasil += " dan merupakan bilangan prima";
+            } else {
+                hasil += " dan bukan bilangan prima";
+            }
+
+            JOptionPane.showMessageDialog(this, "Hasil: " + hasil, "Hasil Cek", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+        
+    private boolean isPrime(int number) {
+        if (number < 2) return false;
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    
+    }//GEN-LAST:event_btnCekActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -157,40 +198,6 @@ public class CekGanjilGenapFrame extends javax.swing.JFrame {
         });
     }
 
-        private void cekNomorAction(java.awt.event.ActionEvent evt) {
-        String inputText = txtInput.getText();
-
-        if (inputText.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Masukkan angka terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        try {
-            int number = Integer.parseInt(inputText);
-            String hasil = (number % 2 == 0) ? "Genap" : "Ganjil";
-
-            if (isPrime(number)) {
-                hasil += " dan merupakan bilangan prima";
-            } else {
-                hasil += " dan bukan bilangan prima";
-            }
-
-            JOptionPane.showMessageDialog(this, "Hasil: " + hasil, "Hasil Cek", JOptionPane.INFORMATION_MESSAGE);
-
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-        
-    private boolean isPrime(int number) {
-        if (number < 2) return false;
-        for (int i = 2; i <= Math.sqrt(number); i++) {
-            if (number % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCek;
     private javax.swing.JButton btnKeluar;
