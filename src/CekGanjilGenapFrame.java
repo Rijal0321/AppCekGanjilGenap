@@ -114,6 +114,7 @@ public class CekGanjilGenapFrame extends javax.swing.JFrame {
     char c = evt.getKeyChar();
     if (!Character.isDigit(c) && c != '.') {
         evt.consume();
+        JOptionPane.showMessageDialog(null, "Masukkan hanya angka!", "Error", JOptionPane.ERROR_MESSAGE);
 }
     }//GEN-LAST:event_txtInputKeyTyped
 
