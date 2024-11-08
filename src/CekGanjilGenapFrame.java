@@ -157,6 +157,32 @@ public class CekGanjilGenapFrame extends javax.swing.JFrame {
         });
     }
 
+        private void cekNomorAction(java.awt.event.ActionEvent evt) {
+        String inputText = txtInput.getText();
+
+        if (inputText.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Masukkan angka terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            int number = Integer.parseInt(inputText);
+            String hasil = (number % 2 == 0) ? "Genap" : "Ganjil";
+
+            if (isPrime(number)) {
+                hasil += " dan merupakan bilangan prima";
+            } else {
+                hasil += " dan bukan bilangan prima";
+            }
+
+            JOptionPane.showMessageDialog(this, "Hasil: " + hasil, "Hasil Cek", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Masukkan angka yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+        
+        
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCek;
     private javax.swing.JButton btnKeluar;
