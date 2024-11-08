@@ -44,6 +44,7 @@ public class CekGanjilGenapFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCek.setBackground(new java.awt.Color(51, 255, 102));
         btnCek.setText("Cek");
         btnCek.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -51,6 +52,7 @@ public class CekGanjilGenapFrame extends javax.swing.JFrame {
             }
         });
 
+        btnKeluar.setBackground(new java.awt.Color(255, 153, 153));
         btnKeluar.setText("Keluar");
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
