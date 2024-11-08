@@ -33,6 +33,11 @@ public class CekGanjilGenapFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Masukkan Angka ");
 
+        txtInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtInputFocusGained(evt);
+            }
+        });
         txtInput.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtInputKeyTyped(evt);
@@ -111,6 +116,10 @@ public class CekGanjilGenapFrame extends javax.swing.JFrame {
         evt.consume();
 }
     }//GEN-LAST:event_txtInputKeyTyped
+
+    private void txtInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtInputFocusGained
+    txtInput.setText("");
+    }//GEN-LAST:event_txtInputFocusGained
 
     /**
      * @param args the command line arguments
